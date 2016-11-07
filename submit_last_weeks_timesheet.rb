@@ -25,11 +25,13 @@ class TimeSheetSubmitter
     browser.goto timesheet_url
   end
 
-
   def submit_last_weeks_timesheet
     browser.button(class_name: 'button submit-link').click
   end
 
+  def confirm_submission
+    browser.button(class_name: 'button-primary js-submit-for-approval').click
+  end
 
   private
 
@@ -54,4 +56,4 @@ worker = TimeSheetSubmitter.new
 worker.login
 worker.go_to_last_weeks_timesheet
 worker.submit_last_weeks_timesheet
-
+worker.confirm_submission
